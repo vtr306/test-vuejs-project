@@ -26,6 +26,15 @@ const routes = [
         /* webpackChunkName: "inactiveProduct" */ "@/views/InactiveProductsView.vue"
       ),
   },
+  {
+    path: "/edit/:id",
+    name: "editProduct",
+    component: () =>
+      import(
+        /* webpackChunkName: "editProduct" */ "@/views/EditProductsView.vue"
+      ),
+    props: true,
+  },
 ];
 
 const router = new VueRouter({

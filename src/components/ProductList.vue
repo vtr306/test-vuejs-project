@@ -12,7 +12,9 @@
             {{ product.price | formatBRL }}
           </b-card-text>
           <div v-if="product.isActive" class="buttons-list">
-            <b-button variant="warning"> Editar </b-button>
+            <router-link :to="'/edit/' + product.id"
+              ><b-button variant="warning"> Editar </b-button></router-link
+            >
             <b-button
               variant="secondary"
               @click.prevent="inactiveProduct(product.id)"

@@ -19,7 +19,11 @@ export async function getProductByID(id) {
 }
 
 export async function updateProductByID(id, product) {
-  return api.put(baseURL + `/${id}`, product);
+  return api.put(baseURL + `/${id}`, product, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 }
 
 export async function deleteProductByID(id) {

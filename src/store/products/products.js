@@ -1,6 +1,8 @@
 /* eslint-disable */
 
 import * as apiProduct from "@/services/ProductsService";
+import router from '@/router/index';
+
 export default {
   state: {
     products: [],
@@ -30,11 +32,11 @@ export default {
         console.log(error);
       }
     },
-    async getProductById({ commit }, id) {
+    async getProductByID({ commit }, id) {
       try {
         const response = await apiProduct.getProductByID(id);
         if (response.data) {
-          console.log(response.data.data);
+          return response.data.data;
         }
       } catch (error) {
         console.log(error);
@@ -49,29 +51,28 @@ export default {
         }
       } catch (error) {
         alert('Erro ao adicionar produto!')
-        console.log(error);
       }
     },
-    async updateProductByID({ commit }, id) {
+    async updateProductByID({ commit }, data) {
       try {
-        const response = await apiProduct.updateProductByID(id);
+        const response = await apiProduct.updateProductByID(data.id, data.product);
         if (response.data) {
-          console.log(response.data.data);
+          alert("Produto editado com sucesso!")
+          router.push("/");
         }
       } catch (error) {
-        console.log(error);
+        alert("Erro ao editar produto!");
       }
     },
-    async deleteProductByID({ commit }, id) {
+    async deleteProductByID({ dispatch }, id) {
       try {
         const response = await apiProduct.deleteProductByID(id);
-        if (response.data) {
+        if (response.status >= 200 && response.status < 300) {
           alert('Produto deletado com sucesso!')
-          console.log(response.data.data);
+          dispatch("getAllProducts", false)
         }
       } catch (error) {
         alert('Erro ao deletar produto!')
-        console.log(error);
       }
     },
     async activeProductByID({ dispatch }, id) {
@@ -83,7 +84,6 @@ export default {
         }
       } catch (error) {
         alert('Erro ao ativar o produto!')
-        console.log(error);
       }
     },
     async inactiveProductByID({ dispatch }, id) {
@@ -95,7 +95,6 @@ export default {
         }
       } catch (error) {
         alert('Erro ao desativar o produto!')
-        console.log(error);
       }
     },
   },
