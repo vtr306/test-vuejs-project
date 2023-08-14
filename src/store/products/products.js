@@ -19,7 +19,6 @@ export default {
   actions: {
     async getAllProducts({ commit }, isActive=true) {
       try {
-        console.log(isActive)
         const response = await apiProduct.getAllProducts(isActive);
         if (response.data) {
           if (isActive == true) {
@@ -46,7 +45,8 @@ export default {
       try {
         const response = await apiProduct.saveProduct(product);
         if (response.data) {
-          alert("Produto adicionado com sucesso!");
+          // alert("Produto adicionado com sucesso!");
+          this.$buefy.dialog.alert('Produto adicionado com sucesso!')
           commit("addProduct", response.data.data);
         }
       } catch (error) {

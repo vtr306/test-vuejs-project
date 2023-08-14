@@ -1,5 +1,5 @@
 <template>
-  <b-form-input ref="inputRef" type="text" />
+  <b-input ref="inputRef" type="text" size="is-medium" />
 </template>
 
 <script>

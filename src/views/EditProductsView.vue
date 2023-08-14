@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>Editar Produto</h1>
+  <div>
+    <h1 class="title">Editar Produto</h1>
     <ProductForm :id="id" />
   </div>
 </template>
@@ -18,5 +18,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

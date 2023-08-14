@@ -1,45 +1,51 @@
 <template>
-  <b-container>
-    <b-row>
-      <b-col
-        v-for="product in products"
-        :key="product.id"
-        class="col-md-4 col-sm-12 mb-4"
-      >
-        <b-card :title="product.name">
-          <b-card-text>
-            {{ product.description }} <br />
+  <div class="columns is-multiline">
+    <div
+      v-for="product in products"
+      :key="product.id"
+      class="column is-one-third"
+    >
+      <div class="card">
+        <div class="card-content">
+          <div class="title">
+            {{ product.name }} <br />
             {{ product.price | formatBRL }}
-          </b-card-text>
-          <div v-if="product.isActive" class="buttons-list">
-            <router-link :to="'/edit/' + product.id"
-              ><b-button variant="warning"> Editar </b-button></router-link
+          </div>
+          <div class="subtitle">{{ product.description }}</div>
+        </div>
+        <footer class="card-footer">
+          <template v-if="product.isActive">
+            <router-link
+              tag="span"
+              :to="'/edit/' + product.id"
+              class="card-footer-item"
+              >Editar</router-link
             >
-            <b-button
-              variant="secondary"
+            <span
+              class="card-footer-item"
               @click.prevent="inactiveProduct(product.id)"
             >
               Desativar
-            </b-button>
-          </div>
-          <div v-else class="buttons-list">
-            <b-button
-              variant="danger"
+            </span>
+          </template>
+          <template v-else>
+            <span
               @click.prevent="deleteProduct(product.id)"
+              class="card-footer-item"
             >
               Deletar
-            </b-button>
-            <b-button
-              variant="primary"
+            </span>
+            <span
               @click.prevent="activeProduct(product.id)"
+              class="card-footer-item"
             >
               Ativar
-            </b-button>
-          </div>
-        </b-card>
-      </b-col>
-    </b-row>
-  </b-container>
+            </span>
+          </template>
+        </footer>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -88,10 +94,5 @@ export default {
 };
 </script>
 <style>
-.buttons-list {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 20px;
-}
+@import "@/assets/scss/ProductList.scss";
 </style>

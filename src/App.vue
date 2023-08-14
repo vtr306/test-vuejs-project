@@ -1,11 +1,19 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Produtos</router-link> |
-      <router-link to="/inactive">Produtos Inativos</router-link> |
-      <router-link to="/create">Adicionar Produto</router-link>
-    </nav>
-    <router-view />
+    <b-navbar type="is-dark">
+      <template #end>
+        <b-navbar-item tag="router-link" to="/">Produtos</b-navbar-item>
+        <b-navbar-item tag="router-link" to="/inactive"
+          >Produtos Inativos</b-navbar-item
+        >
+        <b-navbar-item tag="router-link" to="/create"
+          >Adicionar Produto</b-navbar-item
+        >
+      </template>
+    </b-navbar>
+    <div class="container">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -14,24 +22,5 @@ export default {};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+@import "@/assets/scss/App.scss";
 </style>

@@ -1,57 +1,39 @@
 <template>
-  <b-container>
-    <b-form @submit="onSubmit">
-      <b-form-group
-        class="mb-4"
-        id="input-group-1"
-        label="Nome do Produto:"
-        label-for="input-1"
-      >
-        <b-form-input
-          id="input-1"
-          v-model="product.name"
-          placeholder="Insira o nome do produto"
-          required
-        ></b-form-input>
-      </b-form-group>
+  <section>
+    <b-field label="Nome do Produto:">
+      <b-input
+        v-model="product.name"
+        placeholder="Insira o nome do produto"
+        size="is-medium"
+        required
+      />
+    </b-field>
 
-      <b-form-group
-        class="mb-4"
-        id="input-group-2"
-        label="Descrição do Produto:"
-        label-for="input-2"
-      >
-        <b-form-input
-          id="input-2"
-          v-model="product.description"
-          placeholder="Insira a descrição do Produto"
-          required
-        ></b-form-input>
-      </b-form-group>
+    <b-field label="Descrição do Produto:">
+      <b-input
+        v-model="product.description"
+        placeholder="Insira a descrição do produto"
+        size="is-medium"
+        required
+      ></b-input>
+    </b-field>
 
-      <b-form-group
-        class="mb-4"
-        id="input-group-3"
-        label="Preço do Produto:"
-        label-for="input-3"
-      >
-        <CurrencyInput
-          id="input-3"
-          v-model="product.price"
-          :value="product.price"
-          step="0.01"
-          :options="{ currency: 'BRL' }"
-          placeholder="Insira o preço do Produto"
-          required
-        ></CurrencyInput>
-      </b-form-group>
+    <b-field label="Preço do Produto:">
+      <CurrencyInput
+        v-model="product.price"
+        :value="product.price"
+        step="0.01"
+        :options="{ currency: 'BRL' }"
+        placeholder="Insira o preço do Produto"
+        required
+      ></CurrencyInput>
+    </b-field>
 
-      <b-button type="submit" variant="primary"
-        ><span v-if="!this.id">Enviar Produto</span
-        ><span v-else>Editar Produto</span></b-button
-      >
-    </b-form>
-  </b-container>
+    <b-button size="is-medium" type="is-dark" @click.prevent="onSubmit()"
+      ><span v-if="!this.id">Enviar Produto</span
+      ><span v-else>Editar Produto</span></b-button
+    >
+  </section>
 </template>
 
 <script>
@@ -76,9 +58,7 @@ export default {
   },
   methods: {
     ...mapActions(["saveProduct", "getProductByID", "updateProductByID"]),
-    onSubmit(event) {
-      event.preventDefault();
-
+    onSubmit() {
       if (this.id) {
         this.updateProductByID({
           id: this.id,

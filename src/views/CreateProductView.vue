@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>Adicionar Produto</h1>
+  <div>
+    <h1 class="title">Adicionar Produto</h1>
     <ProductForm />
   </div>
 </template>
@@ -15,5 +15,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

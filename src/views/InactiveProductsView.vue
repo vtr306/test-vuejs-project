@@ -1,5 +1,8 @@
 <template>
-  <ProductList :isActive="false" />
+  <div>
+    <h1 class="title">Produtos Inativos</h1>
+    <ProductList :isActive="false" />
+  </div>
 </template>
 
 <script>
