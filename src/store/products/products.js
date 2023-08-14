@@ -45,8 +45,7 @@ export default {
       try {
         const response = await apiProduct.saveProduct(product);
         if (response.data) {
-          // alert("Produto adicionado com sucesso!");
-          this.$buefy.dialog.alert('Produto adicionado com sucesso!')
+          alert("Produto adicionado com sucesso!");
           commit("addProduct", response.data.data);
         }
       } catch (error) {
