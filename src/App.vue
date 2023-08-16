@@ -11,7 +11,7 @@
         >
       </template>
     </b-navbar>
-    <div class="container">
+    <div class="container" role="main">
       <router-view />
     </div>
   </div>

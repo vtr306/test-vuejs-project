@@ -1,7 +1,9 @@
 <template>
-  <section>
-    <b-field label="Nome do Produto:">
+  <form role="form">
+    <b-field label="Nome do Produto:" label-for="nome">
       <b-input
+        id="nome"
+        name="nome"
         v-model="product.name"
         placeholder="Insira o nome do produto"
         size="is-medium"
@@ -9,8 +11,10 @@
       />
     </b-field>
 
-    <b-field label="Descrição do Produto:">
+    <b-field label="Descrição do Produto:" label-for="descrição">
       <b-input
+        id="descrição"
+        name="descrição"
         v-model="product.description"
         placeholder="Insira a descrição do produto"
         size="is-medium"
@@ -18,8 +22,10 @@
       ></b-input>
     </b-field>
 
-    <b-field label="Preço do Produto:">
+    <b-field label="Preço do Produto:" label-for="preço">
       <CurrencyInput
+        id="preço"
+        name="preço"
         v-model="product.price"
         :value="product.price"
         step="0.01"
@@ -33,7 +39,7 @@
       ><span v-if="!this.id">Enviar Produto</span
       ><span v-else>Editar Produto</span></b-button
     >
-  </section>
+  </form>
 </template>
 
 <script>

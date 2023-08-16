@@ -9,6 +9,9 @@ const routes = [
     path: "/",
     name: "product",
     component: ProductsView,
+    meta: {
+      title: "Produtos",
+    },
   },
   {
     path: "/create",
@@ -17,6 +20,9 @@ const routes = [
       import(
         /* webpackChunkName: "createProduct" */ "@/views/CreateProductView.vue"
       ),
+    meta: {
+      title: "Adicionar Produto",
+    },
   },
   {
     path: "/inactive",
@@ -25,6 +31,9 @@ const routes = [
       import(
         /* webpackChunkName: "inactiveProduct" */ "@/views/InactiveProductsView.vue"
       ),
+    meta: {
+      title: "Produtos Inativos",
+    },
   },
   {
     path: "/edit/:id",
@@ -34,6 +43,9 @@ const routes = [
         /* webpackChunkName: "editProduct" */ "@/views/EditProductsView.vue"
       ),
     props: true,
+    meta: {
+      title: "Editar Produto",
+    },
   },
 ];
 
@@ -41,6 +53,11 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  next();
 });
 
 export default router;
