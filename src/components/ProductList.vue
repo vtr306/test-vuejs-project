@@ -5,7 +5,7 @@
       :key="product.id"
       class="column is-one-third"
     >
-      <div class="card" role="group" aria-label="Produto">
+      <div class="card" role="group" aria-label="Produto" tabindex="0">
         <div class="card-content">
           <div class="title">
             <span>{{ product.name }}</span> <br />

@@ -1,5 +1,13 @@
 <template>
-  <b-input ref="inputRef" type="text" size="is-medium" />
+  <b-input
+    ref="inputRef"
+    type="text"
+    size="is-medium"
+    :id="id"
+    :name="name"
+    :placeholder="placeholder"
+    :required="required"
+  />
 </template>
 
 <script>
@@ -11,6 +19,10 @@ export default {
   props: {
     value: Number,
     options: Object,
+    id: String,
+    name: String,
+    placeholder: String,
+    required: Boolean,
   },
   setup(props) {
     const { inputRef, setValue } = useCurrencyInput(props.options);
